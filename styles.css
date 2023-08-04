@@ -10,15 +10,14 @@
     font: inherit;
 }
 
-body {
-    
-}
-
 #container {
     margin: auto;
     width: 800px;
     display: grid;
-    /* grid-template-columns: repeat(10, 1fr); */
     column-gap: 0;
     row-gap: 0;
+}
+
+.hover {
+    background-color: #888;
 }
