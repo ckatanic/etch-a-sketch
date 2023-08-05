@@ -1,9 +1,10 @@
 const container = document.getElementById('container');
 let trigger = false;
-let cellPerSide = 100;
-let cellWidth = 800/cellPerSide;
+let cellsPerSide = 52;
+let cellWidth = 600/cellsPerSide;
 
-container.style.gridTemplateColumns = `repeat(${cellPerSide}, 1fr)`;
+container.style.gridTemplateColumns = `repeat(${cellsPerSide}, 1fr)`;
+container.style.gap='0';
 document.addEventListener('mousedown', function() {
     trigger= true;
 });
@@ -11,7 +12,7 @@ document.addEventListener('mouseup', () => {
     trigger=false;
 });
 
-for (let i=0; i<(cellPerSide*cellPerSide); i++) {
+for (let i=1; i<(cellsPerSide*cellsPerSide+1); i++) {
     const newDiv = document.createElement('div');
     newDiv.addEventListener('mouseenter', () => {
         if (trigger === true) {
