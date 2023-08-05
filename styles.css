@@ -23,6 +23,7 @@ body {
 #container {
     margin: auto;
     width: 600px;
+    height: 600px;
     display: grid;
     background-color: white;
     border: 1px solid #888
@@ -34,10 +35,18 @@ h1 {
     font-family: "Cedarville Cursive";
 }
 
+p {
+    text-align: center;
+}
+
 .hover {
     background-color: #333;
 }
 
 .controls {
     margin: auto;
+}
+
+button {
+    padding: .2rem .5rem;
 }
