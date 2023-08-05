@@ -2,9 +2,15 @@ const container = document.getElementById('container');
 const button = document.getElementById('button');
 button.addEventListener('click', (e) => {
     e.preventDefault();
-    container.innerHTML="";
     let numberPerGrid = document.getElementById('numberPerRow').value;
-    createGrid(numberPerGrid);
+    if (numberPerGrid > 100 || numberPerGrid < 3) {
+        alert("Please enter a number greater than 2 and less than 101");
+        return;
+    } else {
+        container.innerHTML="";
+        createGrid(numberPerGrid);
+    }
+    
 })
 let trigger = false;
 
