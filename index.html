@@ -13,11 +13,11 @@
     </div>
     <div id="container"></div>
     <div class="controls">
-        <p>Change Number of Squares per Row</p>
-        <form>
-            <input type="number" id="numberPerRow"></input>
-            <button id="button">Submit</button>
-        </form>
+        <p id="currentGridSize">16 x 16</p>
+        <div class="slider-container">
+            <!-- <span id="currentGridSize">16x16</span> -->
+            <input type="range" min="5" max="100" value="16" class="styled-slider slider-progress" id="gridSizeSlider">
+        </div>
     </div>
     <script src="script.js"></script>
 </body>
