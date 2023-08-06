@@ -19,13 +19,18 @@ body {
     place-content: center;
 }
 
-#container {
-    margin: auto;
+#grid-container {
+    /* margin: auto; */
     width: 600px;
     height: 600px;
     display: grid;
     background-color: white;
     border: 1px solid #888
+}
+
+.game-wrapper {
+    display: flex;
+    margin: auto;
 }
 
 h1 {
@@ -47,7 +52,7 @@ p {
 }
 
 .controls {
-    margin: auto;
+    padding: 3rem;
 }
 
 button {

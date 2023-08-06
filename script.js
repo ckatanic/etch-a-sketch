@@ -1,7 +1,22 @@
-const container = document.getElementById('container');
+let mode = 'shade';
+let trigger = false;
+
+const container = document.getElementById('grid-container');
 const button = document.getElementById('button');
 const sizeSlider = document.getElementById('gridSizeSlider');
-const currentGridSize=document.getElementById('currentGridSize');
+const currentGridSize = document.getElementById('currentGridSize');
+const normalButton = document.getElementById('normal');
+const rainbowButton = document.getElementById('rainbow');
+const eraserButton = document.getElementById('eraser');
+eraserButton.addEventListener('click', function() {
+    mode='eraser';
+})
+normalButton.addEventListener('click', function() {
+    mode='normal';
+})
+rainbowButton.addEventListener('click', function() {
+    mode='rainbow';
+})
 
 sizeSlider.onchange = (e) => {
     container.innerHTML="";
@@ -25,8 +40,6 @@ sizeSlider.onmousemove = (e) => {
 //     }
     
 // })
-let mode = 'shade';
-let trigger = false;
 
 function createGrid(number) {
     let cellsPerSide = number;
@@ -84,7 +97,7 @@ function createGrid(number) {
                 } else if (mode === 'normal') {
                     console.log('test')
                     cell.style.backgroundColor='rgba(0, 0, 0, 1)';
-                } else if (mode === 'color') {
+                } else if (mode === 'rainbow') {
                     let r = (Math.floor(Math.random()*256));
                     let g = (Math.floor(Math.random()*256));
                     let b = (Math.floor(Math.random()*256));

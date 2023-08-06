@@ -11,13 +11,17 @@
     <div class="title">
         <h1>Etch-a-Sketch</h1>
     </div>
-    <div id="container"></div>
-    <div class="controls">
-        <p id="currentGridSize">16 x 16</p>
-        <div class="slider-container">
-            <!-- <span id="currentGridSize">16x16</span> -->
-            <input type="range" min="5" max="100" value="16" class="styled-slider slider-progress" id="gridSizeSlider">
+    <div class="game-wrapper">
+        <div class="controls">
+            <button id="eraser">Eraser</button>
+            <button id="normal">Normal</button>
+            <button id="rainbow">Rainbow</button>
+            <p id="currentGridSize">16 x 16</p>
+            <div class="slider-container">
+                <input type="range" min="5" max="100" value="16" class="styled-slider slider-progress" id="gridSizeSlider">
+            </div>
         </div>
+        <div id="grid-container"></div>
     </div>
     <script src="script.js"></script>
 </body>
