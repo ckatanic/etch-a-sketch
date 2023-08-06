@@ -1,47 +1,61 @@
-let mode = 'shade';
+let mode = 'normal';
 let trigger = false;
+let currentGridSize = 16;
+
+console.log(document.getElementById(`${mode}`));
 
 const container = document.getElementById('grid-container');
 const button = document.getElementById('button');
 const sizeSlider = document.getElementById('gridSizeSlider');
-const currentGridSize = document.getElementById('currentGridSize');
+const gridSizeDisplay = document.getElementById('gridSizeDisplay');
 const normalButton = document.getElementById('normal');
 const rainbowButton = document.getElementById('rainbow');
 const eraserButton = document.getElementById('eraser');
-eraserButton.addEventListener('click', function() {
-    mode='eraser';
-})
+const shaderButton = document.getElementById('shader');
+const resetButton = document.getElementById('reset');
+
+
 normalButton.addEventListener('click', function() {
+    removeActiveClassFromCurrentMode();
     mode='normal';
+    normalButton.classList.add('active');
 })
 rainbowButton.addEventListener('click', function() {
+    removeActiveClassFromCurrentMode();
     mode='rainbow';
+    rainbowButton.classList.add('active');
+})
+shaderButton.addEventListener('click', function() {
+    removeActiveClassFromCurrentMode();
+    mode='shader';
+    shaderButton.classList.add('active');
+})
+eraserButton.addEventListener('click', function() {
+    removeActiveClassFromCurrentMode();
+    mode='eraser';
+    eraserButton.classList.add('active');
+})
+resetButton.addEventListener('click', function() {
+    createGrid(currentGridSize);
 })
 
 sizeSlider.onchange = (e) => {
-    container.innerHTML="";
+    
     createGrid(e.target.value);
-    currentGridSize.innerText=`${e.target.value} x ${e.target.value}`;
+    currentGridSize = e.target.value;
+    gridSizeDisplay.innerText=`${e.target.value} x ${e.target.value}`;
 }
 sizeSlider.onmousemove = (e) => {
-    console.log(e.target.value);
-    currentGridSize.innerText=`${e.target.value} x ${e.target.value}`;
+    gridSizeDisplay.innerText=`${e.target.value} x ${e.target.value}`;
 }
 
-// button.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     let numberPerGrid = document.getElementById('numberPerRow').value;
-//     if (numberPerGrid > 100 || numberPerGrid < 3) {
-//         alert("Please enter a number greater than 2 and less than 101");
-//         return;
-//     } else {
-//         container.innerHTML="";
-//         createGrid(numberPerGrid);
-//     }
-    
-// })
+function removeActiveClassFromCurrentMode() {
+    let currentMode = document.getElementById(`${mode}`)
+    currentMode.classList.remove('active');
+}
 
 function createGrid(number) {
+    container.innerHTML="";
     let cellsPerSide = number;
     let cellWidth = 600/cellsPerSide;
 
@@ -59,7 +73,7 @@ function createGrid(number) {
         newDiv.addEventListener('mouseenter', () => {
             if (trigger === true) {
                 let cell = document.getElementById(`cell${i}`);
-                if(mode === 'shade') {
+                if(mode === 'shader') {
                     switch(cell.style.backgroundColor) {
                         case 'rgba(0, 0, 0, 0)':
                             cell.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
@@ -113,7 +127,6 @@ function createGrid(number) {
         newDiv.style.height=`${cellWidth}px`;
         newDiv.style.border='0.5px solid #999';
         newDiv.style.backgroundColor=`rgba(0, 0, 0, 0)`;
-        // newDiv.innerText=`${i}`;
         container.appendChild(newDiv);
     }
 }
