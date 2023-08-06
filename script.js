@@ -13,10 +13,14 @@ button.addEventListener('click', (e) => {
     
 })
 let trigger = false;
+opacityArray = [];
 
 function createGrid(number) {
     let cellsPerSide = number;
     let cellWidth = 600/cellsPerSide;
+    for (let i = 0; i < cellsPerSide*cellsPerSide; i++) {
+        opacityArray[i]=0;
+    }
 
     container.style.gridTemplateColumns = `repeat(${cellsPerSide}, 1fr)`;
     container.style.gap='0';
@@ -27,16 +31,52 @@ function createGrid(number) {
         trigger=false;
     });
 
-    for (let i=1; i<(cellsPerSide*cellsPerSide+1); i++) {
+    for (let i=0; i<(cellsPerSide*cellsPerSide); i++) {
         const newDiv = document.createElement('div');
         newDiv.addEventListener('mouseenter', () => {
             if (trigger === true) {
-                newDiv.classList.add('hover');
+                let cell = document.getElementById(`cell${i}`);
+                switch(cell.style.backgroundColor) {
+                    case 'rgba(0, 0, 0, 0)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+                        break;
+                    case 'rgba(0, 0, 0, 0.1)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.2)';
+                        break;
+                    case 'rgba(0, 0, 0, 0.2)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+                        break;
+                    case 'rgba(0, 0, 0, 0.3)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
+                        break;
+                    case 'rgba(0, 0, 0, 0.4)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                        break;
+                    case 'rgba(0, 0, 0, 0.5)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+                        break;
+                    case 'rgba(0, 0, 0, 0.6)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+                        break;
+                    case 'rgba(0, 0, 0, 0.7)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+                        break;
+                    case 'rgba(0, 0, 0, 0.8)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+                        break;
+                    case 'rgba(0, 0, 0, 0.9)':
+                        cell.style.backgroundColor = 'rgba(0, 0, 0, 1)';
+                        break;
+                    default:
+                        break;
+                }
             }
         })
+        newDiv.id=`cell${i}`;
         newDiv.style.width=`${cellWidth}px`;
         newDiv.style.height=`${cellWidth}px`;
         newDiv.style.border='0.5px solid #999';
+        newDiv.style.backgroundColor=`rgba(0, 0, 0, 0)`;
         // newDiv.innerText=`${i}`;
         container.appendChild(newDiv);
     }
